@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paletería Michoacana - Inicio</title>
+  <link rel="stylesheet" href="estilos.css"/>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff8f0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ff77a9;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff0d0;
+    }
+
+    .bienvenida {
+      background-color: #fff0f5;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .destacado {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .imagen-destacada {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background-color: #ff77a9;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvasPaletas"></canvas>
+
+  <header>
+    <h1>Paletería Michoacana</h1>
+    <nav>
+      <ul>
+        <li><a href="paleteria_1.html">Inicio</a></li>
+        <li><a href="helados.html">Helados</a></li>
+        <li><a href="aguas.html">Aguas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bienvenida">
+      <h2>¡Bienvenidos a la Michoacana!</h2>
+      <p>Disfruta de los sabores más auténticos en paletas, helados y aguas frescas.</p>
+    </section>
+
+    <section class="destacado">
+      <h3>Prueba nuestras delicias</h3>
+      <img src="Premium Vector _ Store playful graphic design concept_ Universal store design_ (2).jpg" alt="Helado delicioso" class="imagen-destacada">
+    </section>
+  </main>
+
+  <footer>
+  
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('canvasPaletas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const paletas = [];
+    for (let i = 0; i < 30; i++) {
+      paletas.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 30 + 20,
+        speedY: Math.random() * 0.8 + 0.3,
+        color: `hsl(${Math.random() * 360}, 90%, 75%)`
+      });
+    }
+
+    function dibujarPaletas() {
+      ctx.clearRect(0, 0, width, height);
+      for (let p of paletas) {
+        // Parte redonda de la paleta
+        ctx.beginPath();
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, 10, p.size);
+        ctx.beginPath();
+        ctx.fillStyle = "#d4a373";
+        ctx.fillRect(p.x + 3, p.y + p.size, 4, 10); // palito
+
+        p.y += p.speedY;
+        if (p.y > height) {
+          p.y = -p.size;
+          p.x = Math.random() * width;
+        }
+      }
+      requestAnimationFrame(dibujarPaletas);
+    }
+
+    dibujarPaletas();
+  </script>
+</body>
+</html>
+6

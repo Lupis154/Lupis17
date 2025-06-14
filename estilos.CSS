@@ -1,0 +1,125 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #fff0f5, #ffe4e1);
+  color: #333;
+}
+
+header {
+  background: linear-gradient(90deg, #ff69b4, #ffb6c1);
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+  background: white;
+  color: #ff69b4;
+  text-decoration: none;
+}
+
+main {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.imagen-destacada {
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  margin-top: 20px;
+}
+
+footer {
+  background: linear-gradient(90deg, #ffc0cb, #ffa6c9);
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+  margin-top: 40px;
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+}
+
+.galeria {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.item {
+  text-align: center;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+.item img {
+  width: 160px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.item img:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .galeria {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imagen-destacada {
+    width: 90%;
+  }
+
+  .item img {
+    width: 80%;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 28px;
+  }
+
+  nav a {
+    font-size: 16px;
+  }
+}
